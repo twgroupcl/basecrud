@@ -5,6 +5,8 @@ namespace Twgroupcl\BaseCrud\app\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Symfony\Component\Console\Output\BufferedOutput;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 class InstallBaseCrud extends Command
 {
@@ -68,5 +70,15 @@ class InstallBaseCrud extends Command
         Artisan::call('migrate"', array(), $settingsOutput);
 
         echo($settingsOutput->fetch());
+
+        $process = new Process(['cp', '-rf', 'vendor/twgroupcl/basecrud/src/templates/User.php', 'app/User.php']);
+
+        $process->run();
+
+        if (!$process->isSuccessful()) {
+            throw new ProcessFailedException($process);
+        }
+
+        echo 'User copied succesfully';
     }
 }
