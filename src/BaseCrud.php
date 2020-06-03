@@ -1,6 +1,6 @@
 <?php
 
-namespace TWGroupCL\BaseCrud;
+namespace Twgroupcl\BaseCrud;
 
 class BaseCrud
 {

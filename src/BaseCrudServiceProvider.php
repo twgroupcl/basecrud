@@ -1,11 +1,16 @@
 <?php
 
-namespace TWGroupCL\BaseCrud;
+namespace Twgroupcl\BaseCrud;
 
 use Illuminate\Support\ServiceProvider;
+use Twgroupcl\BaseCrud\app\Console\Commands\InstallBaseCrud;
 
 class BaseCrudServiceProvider extends ServiceProvider
 {
+    protected $commands = [
+        InstallBaseCrud::class,
+    ];
+
     /**
      * Bootstrap the application services.
      */
@@ -51,6 +56,8 @@ class BaseCrudServiceProvider extends ServiceProvider
     {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'basecrud');
+
+        $this->commands($this->commands);
 
         // Register the main class to use with the facade
         $this->app->singleton('basecrud', function () {
