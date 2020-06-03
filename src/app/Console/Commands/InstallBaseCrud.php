@@ -53,6 +53,20 @@ class InstallBaseCrud extends Command
             '--tag' => 'config',
         ], $permissionOutput);
 
+        Artisan::call('vendor:publish', [
+            '--provider' => 'Backpack\PermissionManager\PermissionManagerServiceProvider',
+        ], $permissionOutput);
+
         echo($permissionOutput->fetch());
+
+        $settingsOutput = new BufferedOutput;
+
+        Artisan::call('vendor:publish', [
+            '--provider' => 'Backpack\Settings\SettingsServiceProvider',
+        ], $settingsOutput);
+
+        Artisan::call('migrate"', array(), $settingsOutput);
+
+        echo($settingsOutput->fetch());
     }
 }
