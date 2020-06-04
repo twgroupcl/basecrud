@@ -136,6 +136,11 @@ class InstallBaseCrud extends Command
             'code' => 'Route::crud(\'customers\', \'CustomerCrudController\');',
         ], $backpackOutput);
 
+        // Publish migrations and seeds
+        $process = new Process(['cp', '-rf', 'vendor/twgroupcl/basecrud/src/database/migrations/2020_06_03_224718_create_customers_table.php', 'database/migrations']);
+        
+        $process->run();
+
         $this->info('Customer Module.' . "\n\n");
         /* End - Install Customer/Module */
 
