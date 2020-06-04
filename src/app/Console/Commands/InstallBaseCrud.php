@@ -141,6 +141,43 @@ class InstallBaseCrud extends Command
         
         $process->run();
 
+        $process = new Process(['cp', '-rf', 'vendor/twgroupcl/basecrud/src/database/migrations/src/database/migrations/2019_10_16_175309_create_sii_activities_table.php', 'database/migrations']);
+        
+        $process->run();
+
+        $process = new Process(['cp', '-rf', 'vendor/twgroupcl/basecrud/src/database/migrations/src/database/seeds/ChileanSiiTableSeeder.php', 'database/seeds']);
+        
+        $process->run();
+
+        $process = new Process(['cp', '-rf', 'vendor/twgroupcl/basecrud/src/templates/Customer/app/Models/SiiActivity.php', 'app/Models/SiiActivity.php']);
+        $process->run();
+
+        // Regions
+        $process = new Process(['cp', '-rf', 'vendor/twgroupcl/basecrud/src/database/migrations/src/database/migrations/2019_10_16_175736_create_regions_table.php', 'database/migrations']);
+        
+        $process->run();
+
+        $process = new Process(['cp', '-rf', 'vendor/twgroupcl/basecrud/src/database/migrations/src/database/migrations/2019_10_16_175742_create_provinces_table.php', 'database/migrations']);
+        
+        $process->run();
+
+        $process = new Process(['cp', '-rf', 'vendor/twgroupcl/basecrud/src/database/migrations/src/database/migrations/2019_10_16_175749_create_communes_table.php', 'database/migrations']);
+        
+        $process->run();
+
+        $process = new Process(['cp', '-rf', 'vendor/twgroupcl/basecrud/src/database/migrations/src/database/seeds/RegionsTableSeeder.php', 'database/seeds']);
+        
+        $process->run();
+
+        $process = new Process(['cp', '-rf', 'vendor/twgroupcl/basecrud/src/templates/Customer/app/Models/Region.php', 'app/Models/Region.php']);
+        $process->run();
+
+        $process = new Process(['cp', '-rf', 'vendor/twgroupcl/basecrud/src/templates/Customer/app/Models/Province.php', 'app/Models/Province.php']);
+        $process->run();
+
+        $process = new Process(['cp', '-rf', 'vendor/twgroupcl/basecrud/src/templates/Customer/app/Models/Commune.php', 'app/Models/Commune.php']);
+        $process->run();
+
         $this->info('Customer Module.' . "\n\n");
         /* End - Install Customer/Module */
 
