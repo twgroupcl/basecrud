@@ -46,6 +46,9 @@ class BaseCrudServiceProvider extends ServiceProvider
 
             // Registering package commands.
             // $this->commands([]);
+
+            // Publish migrations and seeds
+            $this->publishes([__DIR__.'/database/migrations' => database_path('migrations')], 'migrations');
         }
     }
 
