@@ -49,10 +49,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Twgroupcl\\BaseCrud\\BasecrudServiceProvider"
+                "Twgroupcl\\BaseCrud\\BaseCrudServiceProvider"
             ],
             "aliases": {
-                "BaseCrud": "Twgroupcl\\BaseCrud\\BasecrudFacade"
+                "BaseCrud": "Twgroupcl\\BaseCrud\\BaseCrudFacade"
             }
         }
     }
